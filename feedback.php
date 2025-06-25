@@ -29,22 +29,10 @@
         margin-bottom: 30px;
       }
 
-      .lotus-icon {
-        width: 50px;
-        height: 40px;
-        margin: 0 auto 20px;
-        position: relative;
-      }
-
-      .lotus-icon svg {
-        width: 100%;
-        height: 100%;
-      }
-
       .divider {
         width: 120px;
         height: 2px;
-        background-color: #e67e56;
+        background-color: #F8922E;
         margin: 0 auto 30px;
       }
 
@@ -108,7 +96,7 @@
       }
 
       .btn-send {
-        background-color: #e67e56;
+        background-color: #F8922E;
         color: white;
         border: none;
         padding: 18px 35px;
@@ -121,7 +109,7 @@
       }
 
       .btn-send:hover {
-        background-color: #d66b47;
+        background-color:rgb(224, 133, 42);
       }
 
       .success-message {
@@ -149,25 +137,15 @@
       }
 
       .swal2-confirm{
-        background-color: #d66b47 !important
+        background-color: #F8922E !important
       }
     </style>
   </head>
   <body>
     <div class="contact-container">
       <div class="logo-section">
-        <div class="lotus-icon">
-          <svg viewBox="0 0 100 80" fill="#e67e56">
-            <path
-              d="M50 70 C30 60, 20 40, 30 25 C25 35, 35 50, 50 55 C65 50, 75 35, 70 25 C80 40, 70 60, 50 70 Z"
-            />
-            <path
-              d="M50 55 C35 45, 25 25, 35 10 C30 20, 40 35, 50 40 C60 35, 70 20, 65 10 C75 25, 65 45, 50 55 Z"
-            />
-            <path
-              d="M50 40 C40 30, 30 10, 40 -5 C35 5, 45 20, 50 25 C55 20, 65 5, 60 -5 C70 10, 60 30, 50 40 Z"
-            />
-          </svg>
+        <div>
+          <img src="lg.png" alt="">
         </div>
         <div class="divider"></div>
         <div class="contact-text">Contact With Us</div>
