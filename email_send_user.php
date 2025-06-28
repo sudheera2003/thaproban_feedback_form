@@ -58,7 +58,7 @@ try {
     $website = "https://retreat.ceylonlensmedia.com/";
     $facebook = "https://www.facebook.com/";
     $instagram = "https://www.instagram.com/";
-    $address = "Thambapanni Tours Unawatuna Galle,Sri Lanka.";
+    $address = "Thambapanni Unawatuna Galle,Sri Lanka.";
     $phone = "+94 914 381 722 / +94 914 941 552";
 
  }
