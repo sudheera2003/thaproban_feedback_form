@@ -199,10 +199,10 @@
           <div class="form-group">
             <select class="form-select" name="category" id="hotel">
               <option value="default">Select a Hotel</option>
-              <option value="Thaprobain Beach House">Thaprobain Beach House</option>
-              <option value="Thaprobain Pavilion Waves">Thaprobain Pavilion Waves</option>
-              <option value="Thaprobain Pavilion">Thaprobain Pavilion</option>
-              <option value="Thaprobain Villa">Thaprobain Villa</option>
+              <option value="Thaproban Beach House">Thaproban Beach House</option>
+              <option value="Thaproban Pavilion Waves">Thaproban Pavilion Waves</option>
+              <option value="Thaproban Pavilion">Thaproban Pavilion</option>
+              <option value="Thaproban Villa">Thaproban Villa</option>
               <option value="Thambapanni Retreat">Thambapanni Retreat</option>
             </select>
           </div>
