@@ -1,35 +1,4 @@
-<?php
-header('Content-Type: application/json');
-
-include "SMTP.php";
-include "PHPMailer.php";
-include "Exception.php";
-
-use PHPMailer\PHPMailer\PHPMailer;
-
-// Initialize response array
-$response = ['success' => false, 'message' => ''];
-
-try {
-    // Get POST data
-    $name = $_POST['name'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $phone = $_POST['pnum'] ?? '';
-    $subject = $_POST['subject'] ?? '';
-    $hotel = $_POST['hotel'] ?? '';
-    $message = $_POST['msg'] ?? '';
-
-    // Validate required fields (server-side validation)
-    if (empty($name) || empty($email) || empty($phone) || empty($subject) || empty($hotel) || empty($message)) {
-        throw new Exception('All fields are required');
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        throw new Exception('Invalid email format');
-    }
-
-    $body = '
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +8,7 @@ try {
         body {
             margin: 0;
             padding: 0;
-            font-family: Segoe UI;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
             line-height: 1.6;
         }
@@ -205,26 +174,26 @@ try {
                 
                 <div class="detail-row">
                     <div class="detail-label">Customer Name:</div>
-                    <div class="detail-value"><strong>'.$name.'</strong></div>
+                    <div class="detail-value"><strong>[Customer Name]</strong></div>
                 </div>
                 
                 <div class="detail-row">
                     <div class="detail-label">Email Address:</div>
                     <div class="detail-value contact-links">
-                        <a href="mailto:'.$email.'">'.$email.'</a>
+                        <a href="mailto:[customer.email@domain.com]">[customer.email@domain.com]</a>
                     </div>
                 </div>
                 
                 <div class="detail-row">
                     <div class="detail-label">Mobile Number:</div>
                     <div class="detail-value contact-links">
-                        <a href="tel:'.$phone.'">'.$phone.'</a>
+                        <a href="tel:[+1234567890]">[+1234567890]</a>
                     </div>
                 </div>
                 
                 <div class="detail-row">
                     <div class="detail-label">Hotel Name:</div>
-                    <div class="detail-value"><strong>'.$hotel.'</strong></div>
+                    <div class="detail-value"><strong>[Hotel Name]</strong></div>
                 </div>
             </div>
             
@@ -236,14 +205,14 @@ try {
                 
                 <div class="detail-row">
                     <div class="detail-label">Subject:</div>
-                    <div class="detail-value">'.$subject.'</div>
+                    <div class="detail-value">[Inquiry Subject/Type]</div>
                 </div>
                 
                 <div class="detail-row">
                     <div class="detail-label">Message:</div>
                     <div class="detail-value">
                         <div class="message-content">
-                            '.$message.'
+                            [Customer's full message content will appear here. This could be a detailed inquiry about hotel services, booking questions, complaints, or general information requests.]
                         </div>
                     </div>
                 </div>
@@ -252,7 +221,7 @@ try {
             <!-- Timestamp -->
             <div class="inquiry-details">
                 <div class="timestamp">
-                    <strong>Received:</strong> '.date("Y-m-d").' at '.date("h:i").' | <strong>Source:</strong> Website Contact Form
+                    <strong>Received:</strong> [Date] at [Time] | <strong>Source:</strong> Website Contact Form
                 </div>
             </div>
             
@@ -266,35 +235,3 @@ try {
     </div>
 </body>
 </html>
-    ';
-
-    $mail = new PHPMailer;
-    $mail->IsSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'sudheeradilum@gmail.com';
-    $mail->Password = 'ffauohhfnynozkde';
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port = 465;
-    $mail->setFrom($email, $name);
-    $mail->addReplyTo($email, $name);
-    $mail->addAddress('sudheeradilum@gmail.com');
-    $mail->isHTML(true);
-    $mail->Subject = "Contact Form: " . $subject;
-    $mail->Body = $body;
-
-    if ($mail->send()) {
-        $response['success'] = true;
-        $response['message'] = 'Your message has been sent successfully!';
-    } else {
-        throw new Exception('Message could not be sent. Mailer Error: ' . $mail->ErrorInfo);
-    }
-
-} catch (Exception $e) {
-    $response['message'] = $e->getMessage();
-}
-
-// Output the JSON response
-echo json_encode($response);
-exit;
-?>

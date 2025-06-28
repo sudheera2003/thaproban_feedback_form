@@ -11,138 +11,243 @@ use PHPMailer\PHPMailer\PHPMailer;
 $response = ['success' => false, 'message' => ''];
 
 try {
+
+
  $hotel = $_POST['hotel'] ?? '';
+ $name = $_POST['name'] ?? '';
+     $website = "";
+    $facebook = "";
+    $instagram = "";
+    $address = "";
+    $phone = "";
+
+ if ($hotel === "Thaproban Beach House"){
+
+    $website = "https://beachhouse.ceylonlensmedia.com/";
+    $facebook = "https://www.facebook.com/ThaprobanBeachHouse/";
+    $instagram = "https://www.instagram.com/fabulousbeach/";
+    $address = "Thaproban Rooms & Restaurant Unawatuna Galle, Sri Lanka.";
+    $phone = "+94 914 381 722 / +94 914 941 552";
+
+ } else if ($hotel === "Thaproban Pavilion Waves"){
+
+    $website = "https://waves.ceylonlensmedia.com/";
+    $facebook = "https://www.facebook.com/thaprobanpavilionwaves/";
+    $instagram = "https://www.instagram.com/thaprobanpavilionwaves/";
+    $address = "Wella Devala Road,Yaddehimulla,Unawatuna,Sri Lanka.";
+    $phone = "+94 914 944 184 / +94 912 228 351";
+
+ } else if ($hotel === "Thaproban Pavilion") {
+
+    $website = "https://thambapanni.ceylonlensmedia.com/";
+    $facebook = "https://www.facebook.com/";
+    $instagram = "https://www.instagram.com/";
+    $address = "Yaddehimulla Rd, Unawatuna, Sri Lanka.";
+    $phone = "+94 914 944 184 / +94 914 944 178 / +94 912 228 351";
+
+ } else if ($hotel === "Thaproban Villa") {
+
+    $website = "#";
+    $facebook = "https://www.facebook.com/";
+    $instagram = "https://www.instagram.com/";
+    $address = "00000000000000000";
+    $phone = "00000000000";
+
+ } else if ($hotel === "Thambapanni Retreat") {
+
+    $website = "https://retreat.ceylonlensmedia.com/";
+    $facebook = "https://www.facebook.com/";
+    $instagram = "https://www.instagram.com/";
+    $address = "Thambapanni Tours Unawatuna Galle,Sri Lanka.";
+    $phone = "+94 914 381 722 / +94 914 941 552";
+
+ }
+
+
     $body = '
     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Thank You - Message Received</title>
-        <style>
-             * {
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Contacting Us</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Marcellus&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Segoe UI;
-            background-color: #f8f9fa;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            padding: 60px 40px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .logo {
-            color: #6b7280;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-
-        .check-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #a7c7e7, #b8d4f0);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .check-icon::before {
-            content: "✓";
-            color: #4a90e2;
-            font-size: 32px;
-            font-weight: bold;
-        }
-
-        .title {
-            color: #374151;
-            font-size: 36px;
-            font-weight: 300;
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            color: #6b7280;
-            font-size: 18px;
+            font-family: "Marcellus", Georgia, serif;
+            background-color: #f4f4f4;
             line-height: 1.6;
-            margin-bottom: 40px;
         }
-
-        .btn {
-            background: linear-gradient(135deg, #6b9bd2, #4a90e2);
-            color: white;
-            padding: 16px 40px;
-            border: none;
+        
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #F3F3F0;
             border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #E4D7C5;
+            color: black;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            color: #333333;
+        }
+        
+        .content h2 {
+            color: black;
+            font-size: 24px;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+        }
+        
+        .content p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            color: #555555;
+        }
+        
+        .contact-info {
+            background-color: #eeeee7;
+            padding: 25px;
+            border-radius: 6px;
+            margin: 30px 0;
+        }
+        
+        .contact-info h3 {
+            margin: 0 0 15px 0;
+            color: #333333;
             font-size: 18px;
-            font-weight: 500;
-            cursor: pointer;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .contact-info a {
+            color: #667eea;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(74, 144, 226, 0.3);
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(74, 144, 226, 0.4);
-            background: linear-gradient(135deg, #5a8bc4, #3d7bd6);
+        
+        .contact-info a:hover {
+            text-decoration: underline;
         }
-
-        .btn:active {
-            transform: translateY(0);
+        
+        .footer {
+            background-color: #E4D7C5;
+            color: black;
+            padding: 30px;
+            text-align: center;
+            font-size: 14px;
         }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 40px 30px;
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        .social-links a:hover {
+            color: rgb(41, 41, 41);
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 0;
             }
             
-            .title {
-                font-size: 28px;
+            .header, .content, .footer {
+                padding: 25px 20px;
             }
             
-            .subtitle {
-                font-size: 16px;
+            .header h1 {
+                font-size: 24px;
             }
             
-            .btn {
-                padding: 14px 30px;
-                font-size: 16px;
+            .content h2 {
+                font-size: 20px;
             }
         }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="logo">From '.$hotel.' </div>
-            <div class="check-icon"></div>
-            <h1 class="title">Thanks for contacting us</h1>
-            <p class="subtitle">thank you message</p>
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Thank You!</h1>
+            <p>We have received your message</p>
         </div>
-    </body>
-    </html>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Hello '.$name.',</h2>
+            
+            <p>We’ve received your message and truly appreciate you taking the time to contact '.$hotel.'. Our team will review your inquiry as soon as possible.</p>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Need Immediate Assistance?</h3>
+                <p><strong>Email:</strong> <a href="mailto:thambapannisocialhub@gmail.com ">thambapannisocialhub@gmail.com </a></p>
+                <p><strong>Phone:</strong> '.$phone.'</p>
+                <p><strong>Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+            </div>
+            
+            <p>In the meantime, feel free to explore more about our accommodations, dining experiences, and more on our website.</p>
+            <p style="margin-top: 30px;">
+                Warm regards,<br>
+                <strong>The '.$hotel.' Team</strong>
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>'.$hotel.'</strong></p>
+            <p>'.$address.'</p>
+            
+            <div class="social-links">
+                <a href="'.$website.'">Website</a> |
+                <a href="'.$facebook.'">Facebook</a> |
+                <a href="'.$instagram.'">Instagram</a>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 12px;">
+                You received this email because you contacted us through our website.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
     ';
 
     $mail = new PHPMailer;

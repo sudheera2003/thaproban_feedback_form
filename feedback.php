@@ -309,6 +309,7 @@
   if (data.success) {
     const hotelData = new FormData();
     hotelData.append('hotel', hotel);
+    hotelData.append('name', name);
 
     fetch('email_send_user.php', {
       method: 'POST',
